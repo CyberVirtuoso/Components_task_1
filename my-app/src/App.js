@@ -21,14 +21,13 @@ export const App = () => {
 	};
 
 	const onAddButtonClick = () => {
-		const updatedList = [...list, { id: Date.now(), value: value }];
-		setList(updatedList);
+		setList(() => [...list, { id: Date.now(), value: value }]);
 	};
 
 	const errorBLock = <div className={styles.error}>{error}</div>;
 	const listBlock = (
 		<ul className={styles.list}>
-			{[...list].map(({ id, value }) => (
+			{list.map(({ id, value }) => (
 				<li className={styles['list-item']} key={id}>
 					{value}
 				</li>
